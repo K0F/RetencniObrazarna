@@ -34,6 +34,14 @@ class PacketFuser {
     println(chunks.size()+" of chunks created");
   }
 
+  void sortByAck() {
+    for (int i = 0 ; i < chunks.size();i++) {
+      Chunk chunk =  (Chunk)chunks.get(i);
+      chunk.sortByAck();
+    }
+  }
+  
+  
   void sortByTime() {
     for (int i = 0 ; i < chunks.size();i++) {
       Chunk chunk =  (Chunk)chunks.get(i);

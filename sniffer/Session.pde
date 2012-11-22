@@ -23,7 +23,7 @@ class InnerSession {
   fuser.sortByTime();
   fuser.dumpChunks();
 
-/*
+
     String dataset = "";
     for (int i = 0 ; i < packets.size();i++) {
       InnerPacket p = (InnerPacket)packets.get(i);
@@ -33,20 +33,21 @@ class InnerSession {
       }
     }
 
+/*
     int start = dataset.indexOf("1");
 
     if (start>-1) {
 
 
       int allLen = 0;
-      for (int i = start+390 ; i < packets.size();i++) {
+      for (int i = start ; i < packets.size();i++) {
         InnerPacket p = (InnerPacket)packets.get(i);
         allLen += p.data.length;
       }
 
       int cntr = 0;
       alldata = new byte[allLen];
-      for (int i = start+390 ; i < packets.size();i++) {
+      for (int i = start ; i < packets.size();i++) {
         InnerPacket p = (InnerPacket)packets.get(i);
         for (int ii = 0 ; ii < p.data.length;ii++) {
           alldata[cntr] = p.data[ii];
@@ -59,7 +60,7 @@ class InnerSession {
   }
 
   void ordnung() {
-    Collections.sort(packets, new SeqComparator());
+    Collections.sort(packets, new AckComparator());
   }
 
   void check() {
@@ -68,7 +69,7 @@ class InnerSession {
       InnerPacket p = (InnerPacket)packets.get(i);
       if(p.jpegHead)
       print("J");
-      print(p.seq+" ");
+      print(p.ack+" ");
     }
     println();
     println("-------------------------");

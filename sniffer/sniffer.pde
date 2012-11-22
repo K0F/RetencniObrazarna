@@ -83,6 +83,8 @@ void draw() {
       byte d[] = info.data;
       String usec = info.sec+" "+info.usec;
       long seq = info.sequence;
+      long ack = info.ack_num;
+      
       String src = splitTokens(info.toString(), "/-> ")[1];
       String dest = splitTokens(info.toString(), "/-> ")[2];
       /////////////////////////////////////////////////////////////
@@ -104,12 +106,12 @@ anysession:
 
       if (isNewSession) {
         InnerSession tmp = (InnerSession)sessions.get(which);
-        tmp.packets.add(new InnerPacket(src, dest, seq, usec, h, d));
+        tmp.packets.add(new InnerPacket(src, dest, seq, ack, usec, h, d));
       }
       else {
         sessions.add(new InnerSession(src, dest));
         InnerSession tmp = (InnerSession)sessions.get(sessions.size()-1);
-        tmp.packets.add(new InnerPacket(src, dest, seq, usec, h, d));
+        tmp.packets.add(new InnerPacket(src, dest, seq, ack, usec, h, d));
         tmp.ordnung();
       }
 
@@ -138,7 +140,7 @@ anysession:
   try{
   for (int i = 0 ; i < IMAGES.size();i++) {
     PImage img = (PImage)IMAGES.get(i);
-    image(img,0,0);
+    image(img,100,100);
   }
   }catch(Exception e){;}
   

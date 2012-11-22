@@ -8,6 +8,16 @@ class SeqComparator implements Comparator {
   }
 }
 
+class AckComparator implements Comparator {
+
+  int compare(Object o1, Object o2) {
+    long _ack1 = ((InnerPacket)o1).ack;
+    long _ack2 = ((InnerPacket)o2).ack;
+
+    return _ack1 == _ack2 ? 0 : (_ack1 > _ack2) ? 1 : -1;
+  }
+}
+
 
 class TimeComparator implements Comparator {
 

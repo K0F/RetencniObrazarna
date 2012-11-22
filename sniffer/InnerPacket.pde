@@ -2,17 +2,20 @@ class InnerPacket {
   ///////////////////////////////////////////////////////////
   String time;
   long seq;
+  long ack;
   byte data[], header[];
   String src, dest;
   boolean jpegHead = false;
   ///////////////////////////////////////////////////////////
 
-  InnerPacket(String _src, String _dest, long _seq, String _time, byte[] _header, byte[] _data) {
+  InnerPacket(String _src, String _dest, long _seq, long _ack, String _time, byte[] _header, byte[] _data) {
 
     src = _src;
     dest = _dest;
     time = _time;
     seq = _seq;
+    ack = _ack;
+    
     data = new byte[_data.length];
     header = new byte[_header.length];
 

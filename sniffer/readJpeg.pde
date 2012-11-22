@@ -17,11 +17,12 @@ PImage GetFromJPEG(byte[] jpegBytes) {
   float waitTime = 0;
   
    /*
-  while (jpegImage.getHeight (null) == -1){
+  while (jpegImage.getHeight (null) == -1 || waitTime <= 1){
     delay(1); //
-    waitTime += 0.025;
+    waitTime += 0.5;
   }
   */
+  
   
   
   
